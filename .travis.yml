@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t  luizgomaciel/docker-react -f .client/Dockerfile.dev ./client
+
+script:
+  - docker run luizgomaciel/docker-react npm test -- --coverage
+
+after_success:
+  - docker build -t luizgomaciel/multi-client ./client
+  - docker build -t luizgomaciel/multi-nginx ./nginx
+  - docker build -t luizgomaciel/multi-server ./server
+  - docker build -t luizgomaciel/multi-worker ./worker
