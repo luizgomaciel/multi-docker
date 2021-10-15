@@ -10,18 +10,18 @@ script:
  # - docker run luizgomaciel/docker-test npm test -- --coverage
 
 after_success:
-  - docker build -t luizgomaciel/multi-client ./client
-  - docker build -t luizgomaciel/multi-nginx ./nginx
-  - docker build -t luizgomaciel/multi-server ./server
-  - docker build -t luizgomaciel/multi-worker ./worker
+  - docker build -t lgmaciel/multi-client ./client
+  - docker build -t lgmaciel/multi-nginx ./nginx
+  - docker build -t lgmaciel/multi-server ./server
+  - docker build -t lgmaciel/multi-worker ./worker
 
 # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin https://index.docker.io/v1/
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 #Take those images and push them to docker hub
-  - docker push luizgomaciel/multi-client
-  - docker push luizgomaciel/multi-nginx
-  - docker push luizgomaciel/multi-server
-  - docker push luizgomaciel/multi-worker
+  - docker push lgmaciel/multi-client
+  - docker push lgmaciel/multi-nginx
+  - docker push lgmaciel/multi-server
+  - docker push lgmaciel/multi-worker
 
 ###
