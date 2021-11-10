@@ -24,4 +24,8 @@ after_success:
   - docker push lgmaciel/multi-server
   - docker push lgmaciel/multi-worker
 
-###
+deploy:
+  provider: heroku
+  #api_key: $HEROKU_API_KEY
+  api_key: d87fedf3-833f-4684-b9fc-fcc3b41b01a8
+  app: multi-docker-v1
